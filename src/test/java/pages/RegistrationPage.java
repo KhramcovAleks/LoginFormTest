@@ -10,12 +10,14 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
     private final String TITLE_TEXT = "Student Registration Form";
+    private final String IMG_FOLDER = "img/";
     private CalendarComponent calendarComponent = new CalendarComponent();
     private RegisrationResultModal regisrationResultModal = new RegisrationResultModal();
     private SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmail = $("#userEmail"),
+            genderChoice = $("#genterWrapper"),
             userNumber = $("#userNumber"),
             dateOfBerthDay = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
@@ -51,7 +53,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setGender(String value) {
-        $("#genterWrapper").$(byText(value)).click(); // todo move to Selenide elements
+        genderChoice.$(byText(value)).click();
         return this;
     }
 
@@ -66,33 +68,33 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage subjectsInput(String value) {
+    public RegistrationPage setSubjects(String value) {
         subjectsInput.setValue(value).pressEnter();
         return this;
     }
 
-    public RegistrationPage hobbiesWrapper(String value) {
+    public RegistrationPage setHobbies(String value) {
         hobbiesWrapper.$(byText(value)).scrollIntoView(true).click();
         return this;
     }
 
     public RegistrationPage uploadPicture(String value) {
-        uploadPicture.uploadFromClasspath("img/" + value);
+        uploadPicture.uploadFromClasspath(IMG_FOLDER + value);
         return this;
     }
 
-    public RegistrationPage currentAddress(String value) {
+    public RegistrationPage SetCurrentAddress(String value) {
         currentAddress.sendKeys(value);
         return this;
     }
 
-    public RegistrationPage state(String value) {
+    public RegistrationPage SetState(String value) {
         state.click();
         stateCityWrapper.$(byText(value)).click();
         return this;
     }
 
-    public RegistrationPage city(String value) {
+    public RegistrationPage SetCity(String value) {
         city.click();
         stateCityWrapper.$(byText(value)).click();
         return this;

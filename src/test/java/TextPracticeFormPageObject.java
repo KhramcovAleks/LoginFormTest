@@ -1,10 +1,5 @@
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-
 public class TextPracticeFormPageObject extends TestBase {
 
     @Test
@@ -15,10 +10,14 @@ public class TextPracticeFormPageObject extends TestBase {
         String userGender = "Other";
         String userNumber = "1234567890";
         String day = "30";
-        String month ="July";
+        String month = "July";
         String year = "2008";
-        String userSubjects = "English";
-        String userHobbies = "Reading";
+        String userSubjects1 = "English";
+        String userSubjects2 = "Arts";
+        String subjects = userSubjects1 + ", " + userSubjects2;
+        String userHobby1 = "Reading";
+        String userHobby2 = "Music";
+        String hobbies = userHobby1 + ", " + userHobby2;
         String userPicture = "sample.png";
         String userAddress = "Some address 1";
         String userState = "Uttar Pradesh";
@@ -35,7 +34,6 @@ public class TextPracticeFormPageObject extends TestBase {
         String Address = "Address";
         String StateAndCity = "State and City";
 
-
         registrationPage.openPage()
                 .setFirstName(userName)
                 .setLastName(userLastName)
@@ -43,87 +41,28 @@ public class TextPracticeFormPageObject extends TestBase {
                 .setGender(userGender)
                 .setPhone(userNumber)
                 .setBerthDate(day, month, year)
-                .subjectsInput(userSubjects)
-                .hobbiesWrapper(userHobbies)
+                .setSubjects(userSubjects1)
+                .setSubjects(userSubjects2)
+                .setHobbies(userHobby1)
+                .setHobbies(userHobby2)
                 .uploadPicture(userPicture)
-                .currentAddress(userAddress)
-                .state(userState)
-                .city(userCity)
+                .SetCurrentAddress(userAddress)
+                .SetState(userState)
+                .SetCity(userCity)
                 .submit();
 
-        //проверка что появилось модальное окно
         registrationPage.verifyModalAppear()
                 .verifyResult(StudentName, userName + " " + userLastName)
                 .verifyResult(StudentEmail, userEmail)
                 .verifyResult(Gender, userGender)
                 .verifyResult(Mobile, userNumber)
-                .verifyResult(DateOfBirth, day + " " + month +","+ year)
-                .verifyResult(Subjects, userSubjects) //todo тут подумать
-                .verifyResult(Hobbies,userHobbies)
+                .verifyResult(DateOfBirth, day + " " + month + "," + year)
+                .verifyResult(Subjects, subjects)
+                .verifyResult(Hobbies, hobbies)
                 .verifyResult(Picture, userPicture)
                 .verifyResult(Address, userAddress)
-                .verifyResult(StateAndCity,userState + " " + userCity);
+                .verifyResult(StateAndCity, userState + " " + userCity);
 
-        //NCR Gurgaon
-
-       // $("#closeLargeModal").click();
-       // registrationPage.closeResult();
-
-    }
-
-
-    @Test
-    void PracticeFormTestLast() {
-        String userName = "Alex";
-        String userLastName = "Egorov";
-        String userEmail = "alex@egorov.com";
-        String userGender = "Other";
-        String userNumber = "1234567890";
-
-        registrationPage.openPage();
-
-        registrationPage.setFirstName(userName);
-        registrationPage.setLastName(userLastName);
-        registrationPage.setEmail(userEmail);
-        registrationPage.setGender(userGender);
-        registrationPage.setPhone(userNumber);
-
-        //$("#gender-radio-3").sendKeys(" ");
-        //$("label[for='gender-radio-1']").click();
-        //$("#gender-radio-3").parent().click();
-
-
-        $("#subjectsInput").setValue("English").pressEnter();
-        //$("#hobbies-checkbox-1").scrollIntoView(true).sendKeys(" ");
-        //$("label[for='hobbies-checkbox-2']").scrollIntoView(true).click();  //Hobbies - Reading
-        $("#hobbiesWrapper").$(byText("Reading")).scrollIntoView(true).click();
-
-        //$("#uploadPicture").uploadFile(new File("src/test/resources/img/sample.png"));
-        //метод предполагает что файл уже лежит в папке ресурсы
-        $("#uploadPicture").uploadFromClasspath("img/sample.png");
-        $("#currentAddress").sendKeys("Some address 1");
-
-
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("Uttar Pradesh")).click();
-        //$("#react-select-3-option-0").click();
-
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Agra")).click();
-
-        $("#submit").scrollIntoView(true).click();
-        //$("#submit").sendKeys(Keys.ENTER);
-
-        //проверка что появилось модальное окно
-        $(".modal-dialog").should(appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-
-        $(".modal-body").shouldHave(text("Alex Egorov"));
-        $(".modal-body").shouldHave(text("alex@egorov.com"));
-
-        String pngFileName = screenshot("my_file_name");
-
-        $("#closeLargeModal").click();
-
+        // registrationPage.closeResult();
     }
 }
