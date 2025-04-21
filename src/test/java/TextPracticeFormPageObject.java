@@ -1,9 +1,13 @@
 import org.junit.jupiter.api.Test;
 
+/**
+ * Класс с тестами с PageObject
+ */
 public class TextPracticeFormPageObject extends TestBase {
 
     @Test
     void PracticeFormTest() {
+        //переменные  вводимых данных
         String userName = "Alex";
         String userLastName = "Egorov";
         String userEmail = "alex@egorov.com";
@@ -23,6 +27,7 @@ public class TextPracticeFormPageObject extends TestBase {
         String userState = "Uttar Pradesh";
         String userCity = "Agra";
 
+        //Переменные с названием полей в окне с результатами
         String StudentName = "Student Name";
         String StudentEmail = "Student Email";
         String Gender = "Gender";

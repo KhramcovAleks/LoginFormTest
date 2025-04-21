@@ -8,6 +8,9 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
+/**
+ *Класс со странийкей с формой с методами и селекторами
+ */
 public class RegistrationPage {
     private final String TITLE_TEXT = "Student Registration Form";
     private final String IMG_FOLDER = "img/";
@@ -105,16 +108,30 @@ public class RegistrationPage {
         return this;
     }
 
+    /**
+     * Проверка, что оокно с результатами открылось
+     * @return
+     */
     public RegistrationPage verifyModalAppear() {
         regisrationResultModal.verifyModalAppear();
         return this;
     }
 
+    /**
+     * Проверка результатов
+     * @param key
+     * @param value
+     * @return
+     */
     public RegistrationPage verifyResult(String key, String value) {
         regisrationResultModal.verifyResult(key, value);
         return this;
     }
 
+    /**
+     * Метод закрытия окна
+     * @return
+     */
     public RegistrationPage closeResult(){
         $("#closeLargeModal").click();
         return this;

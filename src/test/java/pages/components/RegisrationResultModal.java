@@ -5,6 +5,10 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
+/**
+ * Класс с проверками результатов
+ */
+
 public class RegisrationResultModal {
     public void verifyModalAppear(){
         $(".modal-dialog").should(appear);
