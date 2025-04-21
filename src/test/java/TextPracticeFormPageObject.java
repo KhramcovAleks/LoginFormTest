@@ -14,10 +14,15 @@ public class TextPracticeFormPageObject extends TestBase {
         String userEmail = "alex@egorov.com";
         String userGender = "Other";
         String userNumber = "1234567890";
-
         String day = "30";
         String month ="July";
         String year = "2008";
+        String userSubjects = "English";
+        String userHobbies = "Reading";
+        String userPicture = "sample.png";
+        String userAddress = "Some address 1";
+        String userState = "Uttar Pradesh";
+        String userCity = "Agra";
 
         String StudentName = "Student Name";
         String StudentEmail = "Student Email";
@@ -37,26 +42,14 @@ public class TextPracticeFormPageObject extends TestBase {
                 .setEmail(userEmail)
                 .setGender(userGender)
                 .setPhone(userNumber)
-                .setBerthDate(day, month, year);
-
-        $("#subjectsInput").setValue("English").pressEnter();
-        $("#hobbiesWrapper").$(byText("Reading")).scrollIntoView(true).click();
-
-        //$("#uploadPicture").uploadFile(new File("src/test/resources/img/sample.png"));
-        //метод предполагает что файл уже лежит в папке ресурсы
-        $("#uploadPicture").uploadFromClasspath("img/sample.png");
-        $("#currentAddress").sendKeys("Some address 1");
-
-
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("Uttar Pradesh")).click();
-        //$("#react-select-3-option-0").click();
-
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Agra")).click();
-
-        $("#submit").scrollIntoView(true).click();
-        //$("#submit").sendKeys(Keys.ENTER);
+                .setBerthDate(day, month, year)
+                .subjectsInput(userSubjects)
+                .hobbiesWrapper(userHobbies)
+                .uploadPicture(userPicture)
+                .currentAddress(userAddress)
+                .state(userState)
+                .city(userCity)
+                .submit();
 
         //проверка что появилось модальное окно
         registrationPage.verifyModalAppear()
@@ -64,14 +57,17 @@ public class TextPracticeFormPageObject extends TestBase {
                 .verifyResult(StudentEmail, userEmail)
                 .verifyResult(Gender, userGender)
                 .verifyResult(Mobile, userNumber)
-                .verifyResult(DateOfBirth, day + " " + month +","+ year);
+                .verifyResult(DateOfBirth, day + " " + month +","+ year)
+                .verifyResult(Subjects, userSubjects) //todo тут подумать
+                .verifyResult(Hobbies,userHobbies)
+                .verifyResult(Picture, userPicture)
+                .verifyResult(Address, userAddress)
+                .verifyResult(StateAndCity,userState + " " + userCity);
 
-        $(".modal-body").shouldHave(text("Alex Egorov"));
-        $(".modal-body").shouldHave(text("alex@egorov.com"));
+        //NCR Gurgaon
 
-        String pngFileName = screenshot("my_file_name");
-
-        $("#closeLargeModal").click();
+       // $("#closeLargeModal").click();
+       // registrationPage.closeResult();
 
     }
 

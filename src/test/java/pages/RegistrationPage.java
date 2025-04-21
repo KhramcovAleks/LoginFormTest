@@ -17,7 +17,15 @@ public class RegistrationPage {
             lastNameInput = $("#lastName"),
             userEmail = $("#userEmail"),
             userNumber = $("#userNumber"),
-            dateOfBerthDay = $("#dateOfBirthInput");
+            dateOfBerthDay = $("#dateOfBirthInput"),
+            subjectsInput = $("#subjectsInput"),
+            hobbiesWrapper = $("#hobbiesWrapper"),
+            uploadPicture = $("#uploadPicture"),
+            currentAddress = $("#currentAddress"),
+            state = $("#state"),
+            stateCityWrapper = $("#stateCity-wrapper"),
+            city = $("#city"),
+            submit = $("#submit");
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
@@ -43,8 +51,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setGender(String value) {
-        userEmail.setValue(value);
-        $("#genterWrapper").$(byText("value")).click(); // todo move to Selenide elements
+        $("#genterWrapper").$(byText(value)).click(); // todo move to Selenide elements
         return this;
     }
 
@@ -59,14 +66,55 @@ public class RegistrationPage {
         return this;
     }
 
+    public RegistrationPage subjectsInput(String value) {
+        subjectsInput.setValue(value).pressEnter();
+        return this;
+    }
+
+    public RegistrationPage hobbiesWrapper(String value) {
+        hobbiesWrapper.$(byText(value)).scrollIntoView(true).click();
+        return this;
+    }
+
+    public RegistrationPage uploadPicture(String value) {
+        uploadPicture.uploadFromClasspath("img/" + value);
+        return this;
+    }
+
+    public RegistrationPage currentAddress(String value) {
+        currentAddress.sendKeys(value);
+        return this;
+    }
+
+    public RegistrationPage state(String value) {
+        state.click();
+        stateCityWrapper.$(byText(value)).click();
+        return this;
+    }
+
+    public RegistrationPage city(String value) {
+        city.click();
+        stateCityWrapper.$(byText(value)).click();
+        return this;
+    }
+
+    public RegistrationPage submit() {
+        submit.scrollIntoView(true).click();
+        return this;
+    }
+
     public RegistrationPage verifyModalAppear() {
         regisrationResultModal.verifyModalAppear();
         return this;
     }
+
     public RegistrationPage verifyResult(String key, String value) {
         regisrationResultModal.verifyResult(key, value);
         return this;
     }
 
-
+    public RegistrationPage closeResult(){
+        $("#closeLargeModal").click();
+        return this;
+    }
 }
