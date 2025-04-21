@@ -30,7 +30,7 @@ public class SelenideRepositorySearch {
         //уликнуть на первый репозиторий
         //проверка заголовок selenid/selenid
 //        open("https://github.com"); //[placeholder='Search or jump to...']
-//        $("[data-target='qbsearch-input.inputButtonText']")
+//        $("input[aria-label="Search"]")
 //                .shouldBe(visible) // Ждем, пока элемент станет видимым
 //                .setValue("Selenide")
 //                .pressEnter();
