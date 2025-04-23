@@ -2,6 +2,8 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 
+import static tests.TestData.*;
+
 /**
  * Класс с тестами с PageObject
  */
@@ -9,25 +11,25 @@ public class TextPracticeFormPageObject extends TestBase {
 
     @Test
     void PracticeFormTest() {
-        //переменные  вводимых данных
-        String userName = "Alex";
-        String userLastName = "Egorov";
-        String userEmail = "alex@egorov.com";
-        String userGender = "Other";
-        String userNumber = "1234567890";
-        String day = "30";
-        String month = "July";
-        String year = "2008";
-        String userSubjects1 = "English";
-        String userSubjects2 = "Arts";
-        String subjects = userSubjects1 + ", " + userSubjects2;
-        String userHobby1 = "Reading";
-        String userHobby2 = "Music";
-        String hobbies = userHobby1 + ", " + userHobby2;
-        String userPicture = "sample.png";
-        String userAddress = "Some address 1";
-        String userState = "Uttar Pradesh";
-        String userCity = "Agra";
+//        //переменные  вводимых данных
+//        String userName = "Alex";
+//        String userLastName = "Egorov";
+//        String userEmail = "alex@egorov.com";
+//        String userGender = "Other";
+//        String userNumber = "1234567890";
+//        String day = "30";
+//        String month = "July";
+//        String year = "2008";
+//        String userSubjects1 = "English";
+//        String userSubjects2 = "Arts";
+//        String subjects = userSubjects1 + ", " + userSubjects2;
+//        String userHobby1 = "Reading";
+//        String userHobby2 = "Music";
+//        String hobbies = userHobby1 + ", " + userHobby2;
+//        String userPicture = "sample.png";
+//        String userAddress = "Some address 1";
+//        String userState = "Uttar Pradesh";
+//        String userCity = "Agra";
 
         //Переменные с названием полей в окне с результатами
         String StudentName = "Student Name";
