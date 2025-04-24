@@ -20,4 +20,5 @@ public class TestData {
             userAddress = "Some address 1",
             userState = "Uttar Pradesh",
             userCity = "Agra";
+
 }

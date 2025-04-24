@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Locale;
 
+import static tests.TestDataFaker.*;
 import static utils.RandomUtils.*;
 
 public class TextPracticeFormFaker extends TestBase {
@@ -14,27 +15,25 @@ public class TextPracticeFormFaker extends TestBase {
         //Faker faker = new Faker();
         Faker faker = new Faker(new Locale("en"));
 
-        String[] genders = {"Male", "Female", "Other"};
-
         //переменные  вводимых данных
-        String userName = faker.name().firstName(),
+                String userName = faker.name().firstName(),
                 userLastName = faker.name().lastName(),
                 userEmail = faker.internet().emailAddress(),
                 userGender = getRandomItemFromArray(genders),
-                userNumber = "1234567890",
-                day = "30",
-                month = "July",
-                year = "2008",
-                userSubjects1 = "English",
-                userSubjects2 = "Arts",
+                userNumber = faker.phoneNumber().subscriberNumber(10),//"1234567890",
+                day = getRandomIntString(),//"30",
+                month = getRandomItemFromArray(months),
+                year = getRandomYearString(),//"2008",
+                userSubjects1 = getRandomItemFromArray(subject),
+                userSubjects2 = getRandomItemFromArray(subject),
                 subjects = userSubjects1 + ", " + userSubjects2,
-                userHobby1 = "Reading",
-                userHobby2 = "Music",
+                userHobby1 = getRandomItemFromArray(hobbie),
+                userHobby2 = getRandomItemFromArray(hobbie),
                 hobbies = userHobby1 + ", " + userHobby2,
                 userPicture = "sample.png",
-                userAddress = "Some address 1",
-                userState = "Uttar Pradesh",
-                userCity = "Agra";
+                userAddress = faker.address().fullAddress(),//"Some address 1",
+                userState = getRandomItemFromArray(state),
+                userCity = getRandomCity(userState);
 
         //Переменные с названием полей в окне с результатами
         String StudentName = "Student Name";
